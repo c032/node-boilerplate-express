@@ -14,7 +14,6 @@ export function getApp(driver: IDriver, config: IConfig): express.Express {
 	const app = express();
 
 	app.use(authMiddleware(driver));
-	app.use(errorMiddleware());
 	app.use('/users', usersRouter(driver));
 	app.use(notFoundMiddleware());
 	app.use(errorMiddleware());
