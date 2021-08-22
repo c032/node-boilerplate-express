@@ -38,11 +38,9 @@ export class MemoryDriver implements IDriver {
 		return content;
 	}
 
-	private async writeStateFile(filename: string, rawContent: string): Promise<void> {
+	private writeStateFile(filename: string, rawContent: string): Promise<void> {
 		const file: string = this.getStateFile(filename);
-		const content = await util.promisify(fs.writeFile)(file, rawContent, 'utf8');
-
-		return content;
+		return util.promisify(fs.writeFile)(file, rawContent, 'utf8');
 	}
 
 	private writeStateFileJson(filename: string, data: any): Promise<void> {
