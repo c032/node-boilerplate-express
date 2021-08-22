@@ -1,5 +1,6 @@
 export interface IMemoryDriverConfig {
 	stateDirectory: string;
+	persist: boolean;
 }
 
 export interface IServerConfig {

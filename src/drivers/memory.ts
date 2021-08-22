@@ -60,12 +60,16 @@ export class MemoryDriver implements IDriver {
 		this.users = await this.readStateFileJson<IUser[]>(this.FILE_USERS);
 	}
 
-	public async close(): Promise<void> {
-		await this.flush();
+	public close(): Promise<void> {
+		if (!this.config.persist) {
+			return Promise.resolve();
+		}
+
+		return this.flush();
 	}
 
-	private async flush(): Promise<void> {
-		await this.writeStateFileJson(this.FILE_USERS, this.users);
+	private flush(): Promise<void> {
+		return this.writeStateFileJson(this.FILE_USERS, this.users);
 	}
 
 	public async getTokenUserId(token: string): Promise<UserId> {

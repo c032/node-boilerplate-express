@@ -11,6 +11,7 @@ function getDefaultConfig(): IConfig {
 		},
 		memoryDriver: {
 			stateDirectory: path.join(__dirname, '..', 'data'),
+			persist: false,
 		},
 	};
 }
