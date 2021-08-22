@@ -17,7 +17,7 @@ lint:
 .PHONY: clean
 
 server: dist/cli.js
-	cd dist/ && ${NODE} -e 'require("./cli.js").main();'
+	${NPM} run server
 .PHONY: server
 
 dist/cli.js: build
