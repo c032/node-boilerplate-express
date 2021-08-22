@@ -16,6 +16,10 @@ lint:
 	${NPM} run lint
 .PHONY: clean
 
+test:
+	${NPM} run test
+.PHONY: test
+
 server: dist/cli.js
 	${NPM} run server
 .PHONY: server

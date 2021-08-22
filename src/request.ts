@@ -3,10 +3,20 @@ import express from 'express';
 import { UserId } from './drivers/types';
 
 export class RequestState {
-	userId: UserId|null = null;
+	public userId: UserId|null = null;
 
 	public isLoggedIn(): boolean {
-		return this.userId !== null;
+		const { userId } = this;
+
+		if (userId === null) {
+			return false;
+		}
+
+		if (userId.trim() === '') {
+			return false;
+		}
+
+		return true;
 	}
 }
 
